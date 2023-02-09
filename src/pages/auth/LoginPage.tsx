@@ -13,9 +13,7 @@ import Error from "../../component/Error/Error";
 
 function LoginPage() {
   const dispatch = useDispatch();
-  const { accessToken, refreshToken } = useSelector(
-    (state: RootState) => state.auth
-  );
+ 
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -94,6 +92,7 @@ function LoginPage() {
             <Error message={error} />
           </div>
         )}
+        
         <Input
           typeName="text"
           onChange={handleChange}
