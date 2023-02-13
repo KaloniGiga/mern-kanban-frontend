@@ -92,7 +92,7 @@ function LoginPage() {
             <Error message={error} />
           </div>
         )}
-        
+  
         <Input
           typeName="text"
           onChange={handleChange}
