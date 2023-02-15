@@ -35,7 +35,7 @@ function GoogleAuthButton(props: GoogleAuthProps) {
           })
         );
 
-        navigate("/home");
+        navigate("/home/page");
       })
       .catch((error) => {
         if (error.response) {
