@@ -14,7 +14,7 @@ function OptionComponent(props: any) {
       }`}
     >
       <div className="left mr-2">
-        <Avatar src={data.profile} size={25} />
+        <Avatar src={data.profile} size="25" />
       </div>
 
       <div className="right">

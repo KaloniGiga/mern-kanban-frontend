@@ -35,7 +35,7 @@ function Profile({
         />
       ) : (
         <div>
-          <Avatar />
+          <Avatar size={30} />
         </div>
       )}
 

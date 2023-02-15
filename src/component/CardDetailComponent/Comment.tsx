@@ -86,7 +86,7 @@ function Comment({ comment, myRole, cardId, boardId }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <Avatar classes="w-8 h-8" src={comment.user.avatar} />
+      <Avatar classes="w-8 h-8" size="20" src={comment.user.avatar} />
 
       <div className="w-full ml-2 flex flex-col">
         <div className="w-full text-sm mb-1 flex items-center justify-between">

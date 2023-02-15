@@ -9,7 +9,7 @@ import {byRadius} from "@cloudinary/url-gen/actions/roundCorners";
 interface AvatarProps {
   src?: string;
   alt?: string;
-  size: string;
+  size: string | number;
   styles?: Object;
   classes?: string;
   isAdmin?: boolean;
@@ -37,9 +37,10 @@ function Avatar({
 
 
   const myImage = cld.image(src); 
+   
 
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
-   myImage.resize(fill().width(size).height(size)).roundCorners(byRadius(70));
+   myImage.resize(fill().width(String(size)).height(String(size))).roundCorners(byRadius(70));
 
   return (
     <div  onClick={onClick} className="rounded-full">
