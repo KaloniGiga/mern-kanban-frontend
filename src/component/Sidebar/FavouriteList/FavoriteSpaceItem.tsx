@@ -139,7 +139,7 @@ function FavoriteSpaceItem({ id, fav, isInSideBar }: FavoriteSpaceItemType) {
     <>
       {isInSideBar ? (
         <div className="w-full px-2 py-1 bg-surface ">
-          <NavLink to={`home/workspace/${id}/boards`}>
+          <NavLink to={`/home/workspace/${id}/boards`}>
             <div className="flex items-center justify-between ">
               <div className="w-full flex items-center">
                 {fav.icon ? (
