@@ -149,7 +149,7 @@ export const RecentBoard = ({ board }: Props) => {
         }}
         className=" h-30 rounded cursor-pointer font-semibold"
       >
-        <div className="absolute top-0 left-0 right-0 bottom-0 px-2 py-2 bg-surface hover:text-primary">
+        <div className="absolute top-2 left-2  px-2 py-2  hover:text-primary">
           {board.name}
         </div>
 
@@ -163,7 +163,7 @@ export const RecentBoard = ({ board }: Props) => {
       </NavLink>
 
       {isHovered && (
-        <div className="absolute bottom-1 right-1 hover:bg-slate-200 hover:rounded-full">
+        <div className="absolute bottom-1 right-1 hover:bg-slate-200 hover:rounded-full p-2">
           {board.isFavorite ? (
             <button
               onClick={() =>

@@ -1,3 +1,4 @@
+import  axios  from "axios";
 import React, { useCallback, useRef, useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { useQueryClient } from "react-query";
@@ -13,6 +14,7 @@ import Avatar from "../Avatar/Avatar";
 import Input from "../Input/Input";
 import UserName from "./UserName";
 
+
 function UserProfile() {
   const dispatch = useDispatch();
   const queryClient = useQueryClient()
@@ -22,6 +24,8 @@ function UserProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
 
   const [isEdit, setIsEdit] = useState(false);
+
+  const [url, setUrl] = useState("");
 
   const ImageFileInput = useRef<HTMLInputElement>(null);
 
@@ -37,16 +41,35 @@ function UserProfile() {
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
    
-    console.log(e.target.files);
     if (e.target.files) {
       const fileToUpload = e.target.files[0];
-     
-     console.log(fileToUpload);
-      axiosInstance
+   
+      const formData = new FormData();
+      formData.append('file', fileToUpload);
+      formData.append('upload_preset', 'iokx0lhf');
+   
+
+      axios.post('https://api.cloudinary.com/v1_1/dtsmk0ibg/image/upload', formData).then((response) => {
+          
+            saveImageUrl(response.data.public_id);
+            console.log(response);
+            setUrl(response.data.public_id);
+      }).catch((err) => {
+          console.log(err);
+      })
+        
+    }
+  };
+
+
+  const saveImageUrl = (url: string) => {
+      console.log(url);
+
+          axiosInstance
       .put(
         "/profile/update",
-        { profile: fileToUpload },
-        { headers: { "Content-Type": "multipart/form-data" } }
+        { profile:  url},
+        
       )
       .then((response) => {
         const data = response.data.user;
@@ -90,11 +113,7 @@ function UserProfile() {
           dispatch(addToast({ kind: ToastKind.ERROR, msg: `Error: ${error.message}` }));
         }
       });
-       
-    }
-  };
-
-
+  }
 
 
 
@@ -120,13 +139,11 @@ function UserProfile() {
             style={{ display: "none" }}
           />
 
-          <button onClick={handleUploadImage} className=" rounded-full" >
-            <Avatar
-             classes="rounded-full"  
+          <button onClick={handleUploadImage}  className=" rounded-full" >
+            <Avatar  
              src={user.avatar}
-             size={150}
-               />
-             
+             size="150"
+               />   
           </button>
         </label>
       </div>

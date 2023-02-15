@@ -1,11 +1,15 @@
 import React from "react";
 import LogoIcon from "../../assets/LogoIcon.png";
 import { CgProfile } from "react-icons/cg";
+import { Cloudinary } from "@cloudinary/url-gen";
+import {AdvancedImage} from '@cloudinary/react';
+import {fill} from "@cloudinary/url-gen/actions/resize";
+import {byRadius} from "@cloudinary/url-gen/actions/roundCorners";
 
 interface AvatarProps {
   src?: string;
   alt?: string;
-  size?: number;
+  size: string;
   styles?: Object;
   classes?: string;
   isAdmin?: boolean;
@@ -21,23 +25,33 @@ function Avatar({
   isAdmin,
   onClick,
 }: AvatarProps) {
+
+
+  const cloudName = import.meta.env.VITE_CLOUD_NAME;
+
+  const cld = new Cloudinary({
+       cloud: {
+          cloudName: cloudName
+       }
+  })
+
+
+  const myImage = cld.image(src); 
+
+  // Resize to 250 x 250 pixels using the 'fill' crop mode.
+   myImage.resize(fill().width(size).height(size)).roundCorners(byRadius(70));
+
   return (
-    <>
+    <div  onClick={onClick} className="rounded-full">
       {src ? (
-        <img
-          referrerPolicy="no-referrer"
-          src={src}
-          alt={alt}
-          className={`rounded-full ${classes ? classes : ""}`}
-          style={styles ? styles : {}}
-          width={size}
-          height={size}
-          onClick={onClick}
+        <AdvancedImage
+          cldImg={myImage}
+           
         />
       ) : (
         <CgProfile size={size} />
       )}
-    </>
+    </div>
   );
 }
 

@@ -28,7 +28,7 @@ function FavoriteBoardItem({ id, fav, isInSideBar }: FavoriteBookItemType) {
   const [showOptions, setShowOptions] = useState(false);
   const [isCurrentBoard, setIsCurrentBoard] = useState(false);
 
-  const OptionsBtnRef = useRef();
+  
 
   const [isHovered, setIsHovered] = useState(false);
   const [isStarHovered, setIsStarHovered] = useState(false);
@@ -38,6 +38,7 @@ function FavoriteBoardItem({ id, fav, isInSideBar }: FavoriteBookItemType) {
   const navigate = useNavigate();
 
   const addToFavorite = (workspaceId: string) => {
+     console.log("clicked");
     axiosInstance
       .post("/favorite/add", { resourceId: workspaceId, type: "WORKSPACE" })
       .then((response) => {
@@ -136,7 +137,7 @@ function FavoriteBoardItem({ id, fav, isInSideBar }: FavoriteBookItemType) {
     <>
       {isInSideBar ? (
         <div className="w-full px-2 py-1 bg-surface">
-          <NavLink to={`home/board/${fav._id}`}>
+          <NavLink to={`/home/board/${id}`}>
             <div className="flex items-center justify-between ">
               <div className="w-full flex items-center">
                 {fav.icon ? (
@@ -145,7 +146,7 @@ function FavoriteBoardItem({ id, fav, isInSideBar }: FavoriteBookItemType) {
                   <Avatar
                     alt={fav.name}
                     classes="rounded-full mr-1"
-                    size={25}
+                    size="25"
                   />
                 )}
 
@@ -158,18 +159,14 @@ function FavoriteBoardItem({ id, fav, isInSideBar }: FavoriteBookItemType) {
                 </div>
               </div>
 
-              <div>
-                <button>
-                  <HiOutlineDotsHorizontal />
-                </button>
-              </div>
+             
             </div>
           </NavLink>
         </div>
       ) : (
         <div className="relative mx-2 my-2">
           <NavLink
-            to={`/home/board/${fav._id}`}
+            to={`/home/board/${id}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{

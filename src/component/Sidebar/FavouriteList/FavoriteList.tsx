@@ -17,6 +17,7 @@ function FavoriteList({ isInSideBar }: FavoriteListProps) {
   const getFavorites = async () => {
     const response = await axiosInstance.get("/favorites");
     const data = response.data;
+    console.log(data.favorites);
     return data.favorites;
   };
 

@@ -9,7 +9,7 @@ interface LogoProps {
 
 function Logo({ classes, size = 33 }: LogoProps) {
   return (
-    <Link to={"/home"} className="flex items-center">
+    <Link to={"/home/page"} className="flex items-center">
       <div className={`mr-1`}>
         <CgNotes size={size} />
       </div>

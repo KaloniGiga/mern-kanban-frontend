@@ -106,6 +106,7 @@ export interface FavoriteObj {
   name: string;
   bgImage?: string;
   color?: string;
+ 
   workspace?: {
     _id: string;
     name: string;

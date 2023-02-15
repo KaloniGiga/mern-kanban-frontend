@@ -40,6 +40,7 @@ function FavoriteSpaceItem({ id, fav, isInSideBar }: FavoriteSpaceItemType) {
   const navigate = useNavigate();
 
   const addToFavorite = (workspaceId: string) => {
+    console.log("clicked")
     axiosInstance
       .post("/favorite/add", { resourceId: workspaceId, type: "WORKSPACE" })
       .then((response) => {
@@ -138,7 +139,7 @@ function FavoriteSpaceItem({ id, fav, isInSideBar }: FavoriteSpaceItemType) {
     <>
       {isInSideBar ? (
         <div className="w-full px-2 py-1 bg-surface ">
-          <NavLink to={`home/workspace/${fav._id}/boards`}>
+          <NavLink to={`home/workspace/${id}/boards`}>
             <div className="flex items-center justify-between ">
               <div className="w-full flex items-center">
                 {fav.icon ? (
@@ -146,8 +147,7 @@ function FavoriteSpaceItem({ id, fav, isInSideBar }: FavoriteSpaceItemType) {
                 ) : (
                   <Avatar
                     alt={fav.name}
-                    classes="rounded-full mr-1"
-                    size={25}
+                    size="25"
                   />
                 )}
 
@@ -160,18 +160,14 @@ function FavoriteSpaceItem({ id, fav, isInSideBar }: FavoriteSpaceItemType) {
                 </div>
               </div>
 
-              <div>
-                <button>
-                  <HiOutlineDotsHorizontal />
-                </button>
-              </div>
+             
             </div>
           </NavLink>
         </div>
       ) : (
         <div className="relative mx-4 my-2">
           <NavLink
-            to={`/home/workspace/${fav._id}/boards`}
+            to={`/home/workspace/${id}/boards`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{

@@ -543,9 +543,9 @@ const Card = ({
           <div
             className={`flex items-center rounded text-sm ${
               card.isComplete
-                ? "bg-green text-white p-1"
+                ? "bg-secondary text-white p-2"
                 : new Date(card.expireDate) < new Date(Date.now())
-                ? "bg-red text-white p-1"
+                ? "bg-primary text-white p-2"
                 : ""
             }`}
           >
@@ -572,7 +572,7 @@ const Card = ({
                 <Avatar
                   src={member.avatar}
                   key={member._id}
-                  size={30}
+                  size="30"
                   classes="w-7 h-7 cursor-default"
                 />
               ))}
@@ -584,7 +584,7 @@ const Card = ({
                 key={member._id}
                 src={member.avatar}
                 alt={member.username}
-                size={30}
+                size="30"
                 classes="w-7 h-7 cursor-default"
               />
             ))
