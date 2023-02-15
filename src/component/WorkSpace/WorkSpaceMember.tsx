@@ -44,8 +44,7 @@ function WorkSpaceMember({
       <div className="flex items-center">
         <Avatar
           src={member.avatar}
-          isAdmin={member.role === "ADMIN"}
-          size={40}
+          size="40"
         />
         <span className="ml-3 text-semibold text-md">{member.username}</span>
       </div>

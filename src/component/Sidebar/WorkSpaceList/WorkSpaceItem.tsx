@@ -85,7 +85,7 @@ function WorkSpaceItem({ id, name }: WorkSpaceItemProp) {
         </div>
 
         <NavLink
-          to={`/home/workspace/${id}/setting`}
+          to={`/home/workspace/${id}/settings`}
           className={`flex items-center px-2 py-2 hover:bg-primary_light`}
         >
           <FiSettings />

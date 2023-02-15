@@ -139,7 +139,7 @@ function UserProfile() {
             style={{ display: "none" }}
           />
 
-          <button onClick={handleUploadImage}  className=" rounded-full" >
+          <button onClick={handleUploadImage}  className="rounded-full" >
             <Avatar  
              src={user.avatar}
              size="150"
