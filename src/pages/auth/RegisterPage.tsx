@@ -111,7 +111,7 @@ function RegisterPage() {
           typeName="email"
           value={values.email}
           onChange={handleChange}
-          placeholder="Enter you email"
+          placeholder="Enter you valid gmail. "
           name="email"
           label="Email address"
         />
@@ -120,7 +120,7 @@ function RegisterPage() {
           typeName="password"
           value={values.password}
           onChange={handleChange}
-          placeholder="Enter you password"
+          placeholder="must contain 8 chars(A-Za-z0-9@,.)"
           name="password"
           label="Enter Password"
         />
