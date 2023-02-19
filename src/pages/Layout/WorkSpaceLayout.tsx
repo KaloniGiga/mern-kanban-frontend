@@ -136,6 +136,7 @@ function WorkSpaceLayout() {
                 FavoriteId: null,
               };
             }
+             return workspace;
           });
         });
 
