@@ -60,6 +60,7 @@ function WorkSpaceLayout() {
                 FavoriteId: data._id,
               };
             }
+            return workspace;
           });
         });
 
